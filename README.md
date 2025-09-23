@@ -1,39 +1,16 @@
 # PEPPOL SMP Server
 
-<p align="center">
-  <a href="https://peppol.eu/" target="_blank">
-    <img src="https://raw.githubusercontent.com/DTR3734/YC-SMP/main/assets/peppol-logo.svg" alt="PEPPOL Logo" width="150"/>
-  </a>
-</p>
+A full-stack PEPPOL SMP server application built with Node.js, Express, TypeScript, and PostgreSQL. This server provides all the necessary functionality to manage and publish PEPPOL participant capabilities in a compliant manner.
 
-<h3 align="center">A production-ready, full-stack PEPPOL SMP server application.</h3>
+## ✨ Features
 
-<p align="center">
-  <img src="https://img.shields.io/badge/status-active-brightgreen" alt="Project Status"/>
-  <img src="https://img.shields.io/badge/license-MIT-blue" alt="License"/>
-  <a href="CONTRIBUTING.md">
-    <img src="https://img.shields.io/badge/PRs-welcome-orange" alt="PRs Welcome"/>
-  </a>
-  <br/>
-  <img src="https://img.shields.io/badge/Node.js-%3E%3D18.x-339933?logo=nodedotjs" alt="Node.js version"/>
-  <img src="https://img.shields.io/badge/TypeScript-5.x-3178C6?logo=typescript" alt="TypeScript version"/>
-  <img src="https://img.shields.io/badge/PostgreSQL-14.x-336791?logo=postgresql" alt="PostgreSQL version"/>
-</p>
-
----
-
-This repository contains a full-stack, production-ready PEPPOL Service Metadata Publisher (SMP) server. It is designed to be a complete solution for publishing your organization's PEPPOL capabilities, enabling you to participate in the PEPPOL eDelivery Network.
-
-The server is built with Node.js, Express, and TypeScript, and it uses a PostgreSQL database to store all participant and service information. It generates all necessary PEPPOL-compliant XML documents, including digitally signed Service Metadata, and exposes a RESTful API for managing your SMP data.
-
-## ✨ Key Features
-
--   **PEPPOL-Compliant**: Generates `ServiceGroup` and `SignedServiceMetadata` XML documents in full compliance with the PEPPOL SMP specification.
--   **Digital Signatures**: All `ServiceMetadata` is digitally signed using XMLDSig with a SHA-256 digest, ensuring the integrity and authenticity of your published data.
--   **Database-Driven**: All participant and service information is stored in a robust PostgreSQL database, providing a reliable and scalable data store.
--   **RESTful API**: A comprehensive RESTful API allows for easy management of participants, services, and document types.
--   **Domain-Driven**: The SMP is configured to serve a specific domain, and all generated XMLs contain absolute URLs that point to this domain.
--   **Ready to Deploy**: With a few simple configuration steps, this SMP server is ready to be deployed to a production environment.
+*   **PEPPOL-compliant Endpoints:** Implements the required Service Group and Service Metadata endpoints.
+*   **Full-stack Application:** Includes a front-end for administrative tasks.
+*   **User Management:** Secure user authentication and management with password hashing.
+*   **Participant Management:** CRUD operations for managing SMP participants.
+*   **Multiple Modes:** Supports `development`, `certification`, `uae-certification`, and irreversible `production` modes.
+*   **Database Support:** Uses PostgreSQL for robust data storage in production.
+*   **Secure:** Uses HTTPS with self-signed certificates for development.
 
 ## 🚀 Getting Started
 
@@ -63,7 +40,7 @@ To get a local instance of the SMP server up and running, follow the instruction
 
 3.  **Configure your environment:**
 
-    Create a `.env` file in the root of the project and add your database connection details and the base URL of your SMP:
+    Create a `.env` file in the root of the project and add your database connection details:
 
     ```env
     # .env
@@ -71,37 +48,64 @@ To get a local instance of the SMP server up and running, follow the instruction
     DB_USER=your_postgres_user
     DB_PASSWORD=your_postgres_password
     DB_DATABASE=smp_server
-    SMP_BASE_URL=https://smp.edc.fatcloud.ea
+    DB_PORT=5432
     ```
 
-For more detailed build and deployment instructions, please see the [**BUILD.md**](BUILD.md) file.
+4.  **Initialize the database:**
 
-## 🛠️ Usage
+    ```bash
+    npm run db:init
+    ```
 
-To run the server in development mode, use the following command:
+5.  **Generate self-signed certificates for HTTPS:**
 
-```bash
-npm run dev
-```
+    ```bash
+    npm run generate-certs
+    ```
 
-The server will start on `https://localhost:3001`.
+6.  **Run the server in development mode:**
 
-To build the server for production, use:
+    ```bash
+    npm run dev
+    ```
 
-```bash
-npm run build
-```
+The server will be available at `https://localhost:3001`.
 
-And to run the production server, use:
+## ⚙️ Application Modes
 
-```bash
-npm run start
-```
+The application can run in several modes:
+
+*   **`development`**: Default mode for local development.
+*   **`certification`**: For testing compliance with PEPPOL standards.
+*   **`uae-certification`**: For testing compliance with the specific requirements of the UAE PEPPOL Authority.
+*   **`production`**: For live, operational use. **This mode is irreversible.**
+
+You can switch modes via the API endpoint `PUT /api/mode` with a JSON body like `{"mode": "certification"}`.
 
 ## 🤝 Contributing
 
-Contributions are welcome! Please see our [**CONTRIBUTING.md**](CONTRIBUTING.md) for details on how to contribute to this project.
+We welcome contributions! Please follow these guidelines when contributing to the project.
+
+### Reporting Bugs
+
+-   **Ensure the bug was not already reported** by searching on GitHub under [Issues](https://github.com/DTR3734/YC-SMP/issues).
+-   If you're unable to find an open issue addressing the problem, [open a new one](https://github.com/DTR3734/YC-SMP/issues/new). Be sure to include a **title and clear description**, as much relevant information as possible, and a **code sample or an executable test case** demonstrating the expected behavior that is not occurring.
+
+### Suggesting Enhancements
+
+-   Open a new issue with the "enhancement" label.
+-   Clearly describe the proposed enhancement, why it would be useful, and provide examples if possible.
+
+### Pull Requests
+
+We welcome pull requests for bug fixes and feature enhancements.
+
+1.  Fork the repository and create your branch from `main`.
+2.  If you've added code that should be tested, add tests.
+3.  Ensure the test suite passes.
+4.  Make sure your code lints (if a linter is configured).
+5.  Issue that pull request!
 
 ## 📄 License
 
-This project is licensed under the MIT License. See the `LICENSE` file for more information.
+This project is licensed under the MIT License.

@@ -13,6 +13,7 @@ import * as participantService from './services/participantService.server';
 import { ApiError } from './utils/errors.server';
 import { initializeDatabase } from './database/database';
 import { initializeMode, getMode, setMode, modeMiddleware } from './middleware/mode';
+import uaeCertificationRouter from './routes/uaeCertification';
 
 const app = express();
 const port = 3001;
@@ -204,6 +205,9 @@ apiRouter.put('/mode', async (req, res) => {
         }
     }
 });
+
+// UAE Certification
+apiRouter.use(uaeCertificationRouter);
 
 // Mount the API router at the /api prefix
 app.use('/api', apiRouter);

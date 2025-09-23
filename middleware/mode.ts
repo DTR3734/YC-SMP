@@ -7,7 +7,7 @@ export const initializeMode = async () => {
     try {
         const modeData = await fs.readFile('mode.json', 'utf-8');
         const { mode } = JSON.parse(modeData);
-        if (['development', 'certification', 'production'].includes(mode)) {
+        if (['development', 'certification', 'uae-certification', 'production'].includes(mode)) {
             currentMode = mode;
         }
     } catch (error) {
@@ -21,7 +21,7 @@ export const setMode = async (newMode: string) => {
     if (currentMode === 'production') {
         throw new Error('Cannot change mode from production.');
     }
-    if (!['development', 'certification', 'production'].includes(newMode)) {
+    if (!['development', 'certification', 'uae-certification', 'production'].includes(newMode)) {
         throw new Error('Invalid mode specified.');
     }
     await fs.writeFile('mode.json', JSON.stringify({ mode: newMode }));
