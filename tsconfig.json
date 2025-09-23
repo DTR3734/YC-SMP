@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "CommonJS",
+    "outDir": "./dist",
+    "esModuleInterop": true,
+    "strict": true,
+    "skipLibCheck": true,
+    "resolveJsonModule": true
+  },
+  "include": [
+    "server.ts",
+    "services/**/*.server.ts",
+    "database/**/*.ts",
+    "types.server.ts",
+    "utils/**/*.server.ts",
+    "utils/**/*.shared.ts"
+  ]
+}

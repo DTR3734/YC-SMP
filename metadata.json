@@ -1,0 +1,5 @@
+{
+  "name": "PEPPOL SMP",
+  "description": "An application to perform Service Metadata Publisher (SMP) lookups on the PEPPOL network.",
+  "requestFramePermissions": []
+}

@@ -1,0 +1,16 @@
+# Dependencies
+/node_modules
+
+# Build output
+/dist
+
+# Environment variables
+.env
+
+# SSL certificates
+key.pem
+cert.pem
+
+# OS-specific
+.DS_Store
+npm-debug.log

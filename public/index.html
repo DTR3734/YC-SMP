@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PEPPOL SMP Lookup</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        gray: {
+                            50: '#f7f8fa',
+                            100: '#eef0f3',
+                            200: '#d1d7de',
+                            300: '#aeb9c7',
+                            400: '#8c98a8',
+                            500: '#6d7a8b',
+                            600: '#525c6a',
+                            700: '#3e4651',
+                            800: '#2a2f37',
+                            900: '#1a1d21',
+                        },
+                        blue: {
+                            50: '#e5f1fb',
+                            100: '#cce3f6',
+                            200: '#99c7ed',
+                            300: '#66abe5',
+                            400: '#3390dc',
+                            500: '#0078D4',
+                            600: '#006ac1',
+                            700: '#0058a1',
+                            800: '#00457f',
+                            900: '#00335e',
+                        },
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+      /* Simple preloader to avoid blank screen while React loads */
+      #root:empty::before {
+        content: "Loading application...";
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        font-family: sans-serif;
+        font-size: 1.5rem;
+        color: #8c98a8;
+      }
+    </style>
+<link rel="stylesheet" href="/index.css">
+</head>
+<body class="bg-gray-100 dark:bg-gray-900">
+    <div id="root"></div>
+    <script type="importmap">
+{
+  "imports": {
+    "react": "https://aistudiocdn.com/react@^19.1.1",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.1.1/",
+    "react/": "https://aistudiocdn.com/react@^19.1.1/",
+    "cors": "https://aistudiocdn.com/cors@^2.8.5",
+    "express": "https://aistudiocdn.com/express@^5.1.0",
+    "sqlite3": "https://aistudiocdn.com/sqlite3@^5.1.7",
+    "crypto": "https://aistudiocdn.com/crypto@^1.0.1",
+    "fast-xml-parser": "https://aistudiocdn.com/fast-xml-parser@^5.2.5",
+    "dns/": "https://aistudiocdn.com/dns@^0.2.2/",
+    "path": "https://aistudiocdn.com/path@^0.12.7",
+    "dns": "https://aistudiocdn.com/dns@^0.2.2",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.20.0",
+    "fs": "https://aistudiocdn.com/fs@^0.0.1-security",
+    "https": "https://aistudiocdn.com/https@^1.0.0"
+  }
+}
+</script>
+    <script type="module" src="/index.tsx"></script>
+</body>
+</html>

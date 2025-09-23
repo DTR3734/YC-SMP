@@ -1,0 +1,28 @@
+{
+  "name": "peppol-smp-app",
+  "version": "1.0.0",
+  "description": "A full-stack PEPPOL SMP server application.",
+  "main": "dist/server.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/server.js",
+    "dev": "ts-node server.ts",
+    "db:init": "ts-node database/init-db.ts",
+    "generate-certs": "openssl req -x509 -newkey rsa:2048 -keyout key.pem -out cert.pem -sha256 -days 365 -nodes -subj \"/C=US/ST=State/L=City/O=Organization/OU=OrgUnit/CN=localhost\""
+  },
+  "dependencies": {
+    "@google/genai": "^0.14.0",
+    "@types/xml-crypto": "^1.4.6",
+    "express": "^4.19.2",
+    "fast-xml-parser": "^4.3.6",
+    "pg": "^8.16.3",
+    "xml-crypto": "^6.1.2"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/node": "^20.12.12",
+    "@types/pg": "^8.15.5",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.5"
+  }
+}
